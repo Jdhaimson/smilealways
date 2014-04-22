@@ -14,11 +14,13 @@ function detectRedirect(details) {
     // ignore links with these strings in them
     var redirecturl1 = "redirect=true";
     var redirecturl2 = "redirect.html";
-   
+    var wishlistaddurl = "/gp/wishlist";
+
     if (url != null) {
         
         // Don't try and redirect pages that will already be redirected
-        if(url.match(redirecturl1) == null && url.match(redirecturl2) == null) {
+        if(url.match(redirecturl1) == null && url.match(redirecturl2) == null 
+            && url.match(wishlistaddurl) == null) {
 
             // Check non-secure links
             if(url.match(http + amazonurl) != null) {
