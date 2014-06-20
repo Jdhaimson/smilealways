@@ -5,11 +5,6 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
     types: ["main_frame","sub_frame"]
 }, ["blocking"]);
 
-// inject script into web site
-chrome.tabs.executeScript(null, {
-  code: "chrome.extension.sendRequest({ref: document.referrer}, function(response) {})"
-}
-
 function detectRedirect(details) {
     var url = details.url;
     
