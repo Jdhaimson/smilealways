@@ -5,37 +5,54 @@ chrome.webRequest.onBeforeRequest.addListener(function(details) {
     types: ["main_frame","sub_frame"]
 }, ["blocking"]);
 
+// inject script into web site
+chrome.tabs.executeScript(null, {
+  code: "chrome.extension.sendRequest({ref: document.referrer}, function(response) {})"
+}
+
 function detectRedirect(details) {
     var url = details.url;
+    
+    if (url == null) {
+        return;
+    }
+    
     var http = "http://";
     var https = "https://";
     var amazonurl = "www.amazon.com";
-    var smileurl = "smile.amazon.com";
     // ignore links with these strings in them
-    var filter = "(redirect=true)|(redirect.html)|(/gp/wishlist)|(aws.amazon.com)";
+    var filter = "(sa-no-redirect=)|(redirect=true)|(redirect.html)|(/gp/wishlist)|(aws.amazon.com)";
     
-   
-    if (url != null) {
+    // Don't try and redirect pages that are in our filter
+    if (url.match(filter) != null) {
+        return;
+    }
+
+    if (url.match(http + amazonurl) != null) {
+        // If this is the non-secure link...
+        return redirectToSmile(http, amazonurl);
         
-        // Don't try and redirect pages that are in our filter
-        if(url.match(filter) == null) {
-
-            // Check non-secure links
-            if(url.match(http + amazonurl) != null) {
-                return{
-                    // redirect to amazon smile append the rest of the url
-                    redirectUrl : http + smileurl + url.split(amazonurl)[1]
-                };
-            }
-
-            // Check secure links
-            else if (url.match(https + amazonurl) != null) {
-                return{
-                    // redirect to amazon smile url and append the rest of the url
-                    redirectUrl : https + smileurl + url.split(amazonurl)[1]
-                };
-            }
-        }
+    }  else if (url.match(https + amazonurl) != null) {
+        // If this is the secure link...
+        return redirectToSmile(https, amazonurl);
+        
     }
 }
 
+function redirectToSmile(scheme, amazonurl) {
+    var smileurl = "smile.amazon.com";
+    return {
+        // redirect to amazon smile append the rest of the url
+        redirectUrl : scheme + smileurl + getRelativeRedirectUrl(amazonurl)
+    };
+}
+
+function getRelativeRedirectUrl(amazonurl) {
+    var relativeUrl = url.split(amazonurl)[1];
+    var noRedirectIndicator = "sa-no-redirect=1";
+    var paramStart = "?";
+    if (relativeUrl && relativeUrl != paramStart) {
+        return relativeUrl + "&" + noRedirectIndicator;
+    }
+    return paramStart + noRedirectIndicator;
+}
