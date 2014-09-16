@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Author</key>
-	<string>Josh Haimson</string>
+	<string>James Candalino</string>
 	<key>Builder Version</key>
-	<string>534.57.2</string>
+	<string>9537.78.2</string>
 	<key>CFBundleDisplayName</key>
-	<string>smilealways</string>
+	<string>Smile Always</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.smilealways</string>
+	<string>com.candylion.smilealways</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
@@ -17,14 +17,17 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>Chrome</key>
-	<dict/>
+	<dict>
+		<key>Global Page</key>
+		<string>global.html</string>
+	</dict>
 	<key>Content</key>
 	<dict>
 		<key>Scripts</key>
 		<dict/>
 	</dict>
 	<key>Description</key>
-	<string>Smile Always redirects all amazon.com requests to smile.amazon.com</string>
+	<string>Redirects any www.amazon.com page to smile.amazon.com</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
@@ -33,8 +36,7 @@
 		<dict>
 			<key>Allowed Domains</key>
 			<array>
-				<string>http://www.amazon.com</string>
-				<string>https://www.amazon.com</string>
+				<string>www.amazon.com</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>
@@ -43,6 +45,6 @@
 		</dict>
 	</dict>
 	<key>Website</key>
-	<string>www.smilealways.io</string>
+	<string>http://www.smilealways.io</string>
 </dict>
 </plist>
