@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SmileAlways Options</title>
+    <style type="text/css" media="screen">
+        html {
+            background-color: #fefefe;
+            color: #555;
+        }
+        body {
+            width: 500px;
+            margin: 0 auto;
+            font-family: "Helvetica", "Verdana", "sans-serif";
+        }
+        h1 {
+            font-family: "Palatino", "Georgia", "serif";
+            border-bottom: 1px solid #efefef;
+            padding: 10px 0px;
+            padding-left: 40px;
+            margin: 30px 0px;
+            background-image: url(SA-48x48.png);
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: 32px;
+            
+        }
+        .row {
+            padding-bottom:10px;
+        }
+    </style>    
+</head>
+<body>
+
+<h1>Smile Always Options</h1>
+
+<div class="row">
+<label>
+  <input type="checkbox" id="use_smile"/>
+  Redirect to smile.amazon.com
+</label>
+</div>
+
+
+<div class="row">
+<label>
+  Use affiliate tag: 
+  <input type="text" id="affiliate_code"><br />
+  <small>Example: http://amazon.com/ref=smi_www_rcolv2_go_smi?_encoding=UTF8&camp=1789&creative=9325&linkCode=ur2&tag=<strong>artisan0d-20</strong></small>
+</label>
+</div>
+
+<div id="status"></div>
+<button id="save">Save</button>
+
+<script src="options.js"></script>
+</body>
+</html>

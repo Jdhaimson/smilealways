@@ -14,48 +14,48 @@ function detectRedirect(details) {
         return;
     }
     
-    var http = "http://";
-    var https = "https://";
-    var amazonurl = "www.amazon.com";
     // ignore links with these strings in them
     var filter = "(sa-no-redirect=)|(redirect=true)|(redirect.html)|(/gp/dmusic/cloudplayer)|(/gp/wishlist)|(aws.amazon.com)";
+    
+    // Don't block our own (or someone else's) affiliate tag
+    if (localStorage.saUseAffiliateCode && !localStorage.saUseSmile) {
+        filter = "(tag=)|" + filter;
+    }
     
     // Don't try and redirect pages that are in our filter
     if (url.match(filter) != null) {
         return;
     }
-
-    if (url.match(http + amazonurl) != null) {
-        // If this is the non-secure link...
-        return redirectToSmile(http, amazonurl, url);
-
-    }  else if (url.match(https + amazonurl) != null) {
-        // If this is the secure link...
-        return redirectToSmile(https, amazonurl, url);
+    
+    newUrl = url;
+    
+    // Add smile.amazon.com if necessary
+    if (localStorage.saUseSmile) {
+        newUrl = url.replace(/(https?:\/\/)(www\.amazon\.com|amazon\.com)(.*)/i, "$1smile.amazon.com$3");
     }
-
-}
-
-function redirectToSmile(scheme, amazonurl, url) {
-    var smileurl = "smile.amazon.com";
-    return {
-        // redirect to amazon smile append the rest of the url
-        redirectUrl : scheme + smileurl + getRelativeRedirectUrl(amazonurl, url)
-    };
-}
-
-function getRelativeRedirectUrl(amazonurl, url) {
-    var relativeUrl = url.split(amazonurl)[1];
-    var noRedirectIndicator = "sa-no-redirect=1";
-    var paramStart = "?";
-    var paramStartRegex = "\\" + paramStart;
-    var newurl = null;
-
-    // check to see if there are already GET variables in the url
-    if (relativeUrl.match(paramStartRegex) != null) {
-        newurl = relativeUrl + "&" + noRedirectIndicator;
+    
+    // Add tag parameter if it doesn't exist
+    if (localStorage.saUseAffiliateCode) {
+        if (url.indexOf("?") < 0) {
+            newUrl = newUrl + "?tag=" + localStorage.saAffiliateCode;
+        } else if (!url.match(/\?.*tag=[^\&]*.*/i)) {
+            newUrl = newUrl.replace(/(\?.*)/i, "$1&tag=awefawf");
+        }
+    }
+    
+    // Add the no-redirect parameter
+    if (newUrl.indexOf("?") < 0) {
+        newUrl += "?sa-no-redirect=1";
     } else {
-        newurl = relativeUrl + paramStart + noRedirectIndicator;
+        newUrl += "&sa-no-redirect=1";
     }
-    return newurl;
+    
+    // If it's the same URL, stop here
+    if (newUrl === url) {
+        return;
+    }
+    
+    return {
+        redirectUrl: newUrl
+    };
 }
