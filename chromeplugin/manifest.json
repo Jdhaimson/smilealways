@@ -2,18 +2,18 @@
     "background": {
        "scripts": [ "request.js" ]
     },
-    "description": "Redirects any www.amazon.com page to smile.amazon.com",
+    "description": "Redirects any www.amazon.com page to smile.amazon.com (modified version)",
     "icons": { "16": "SA-16x16.png",
                "48": "SA-48x48.png",
                "128": "SA-128x128.png" },
     "manifest_version": 2,
-    "name": "Smile Always",
+    "name": "Smile Always (Affiliate version)",
     "permissions": [ "webRequest", "webRequestBlocking", "http://www.amazon.com/*", "https://www.amazon.com/*", "storage" ],
-    "version": "0.86",
-    "homepage_url": "http://www.smilealways.io",
-    "author":"Josh Haimson and Dan Elitzer",
+    "version": "0.1",
+    "homepage_url": "http://www.google.com",
+    "author":"Author",
     "page_action": {
-        "default_title" : "SmileAlways is on",
+        "default_title" : "SmileAlways (Affiliate) is on",
         "default_icon" : "happy-smile.png"
     },
     "options_page": "options.html"
