@@ -18,7 +18,7 @@ function detectRedirect(details) {
     var https = "https://";
     var amazonurl = "www.amazon.com";
     // ignore links with these strings in them
-    var filter = "(sa-no-redirect=)|(redirect=true)|(redirect.html)|(r.html)|(/gp/dmusic/cloudplayer)|(/gp/wishlist)|(aws.amazon.com)";
+    var filter = "(sa-no-redirect=)|(redirect=true)|(redirect.html)|(r.html)|(/gp/dmusic/cloudplayer)|(/gp/wishlist)|(aws.amazon.com)|(read.amazon.com)";
     
     // Don't try and redirect pages that are in our filter
     if (url.match(filter) != null) {
