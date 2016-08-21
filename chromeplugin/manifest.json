@@ -9,7 +9,7 @@
     "manifest_version": 2,
     "name": "Smile Always",
     "permissions": [ "webRequest", "webRequestBlocking", "http://www.amazon.com/*", "https://www.amazon.com/*" ],
-    "version": "0.90",
+    "version": "0.91",
     "homepage_url": "http://www.smilealways.io",
     "author":"Josh Haimson and Dan Elitzer"
 }
