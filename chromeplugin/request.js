@@ -14,9 +14,8 @@ function detectRedirect(details) {
         return;
     }
 
-    var http = "http://";
-    var https = "https://";
-    var amazonurl = "www.amazon.com";
+    var expression = /(https?:\/\/)www\.amazon\.([a-z]{2,4})/gi;
+    var regex = new RegExp(expression);
     // ignore links with these strings in them
     var filter = "(sa-no-redirect=)"
                + "|(redirect=true)"
@@ -27,30 +26,27 @@ function detectRedirect(details) {
                + "|(/gp/photos)"
                + "|(/gp/wishlist)"
                + "|(/ap/)"
-               + "|(aws.amazon.com)"
-               + "|(read.amazon.com)"
-               + "|(login.amazon.com)"
-               + "|(payments.amazon.com)"
-               + "|(amazon.com/clouddrive)";
+               + "|(aws.amazon.[a-z]{2,4})"
+               + "|(read.amazon.[a-z]{2,4})"
+               + "|(login.amazon.[a-z]{2,4})"
+               + "|(payments.amazon.[a-z]{2,4})"
+               + "|(amazon.[a-z]{2,4}/clouddrive)";
 
     // Don't try and redirect pages that are in our filter
     if (url.match(filter) != null) {
         return;
     }
 
-    if (url.match(http + amazonurl) != null) {
-        // If this is the non-secure link...
-        return redirectToSmile(http, amazonurl, url);
-
-    }  else if (url.match(https + amazonurl) != null) {
+    var match = regex.exec(url);
+    if (match != null) {
         // If this is the secure link...
-        return redirectToSmile(https, amazonurl, url);
+        return redirectToSmile(match[1], 'www.amazon.' + match[2], url, match[2]);
     }
 
 }
 
-function redirectToSmile(scheme, amazonurl, url) {
-    var smileurl = "smile.amazon.com";
+function redirectToSmile(scheme, amazonurl, url, tld) {
+    var smileurl = "smile.amazon." + tld;
     return {
         // redirect to amazon smile append the rest of the url
         redirectUrl : scheme + smileurl + getRelativeRedirectUrl(amazonurl, url)
