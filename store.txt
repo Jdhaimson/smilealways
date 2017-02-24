@@ -1,0 +1,26 @@
+Redirects any www.amazon.com or www.amazon.de page to smile.amazon.com/smile.amazon.de
+
+SmileAlways Internalised edition makes giving to charity easy by automatically redirecting all Amazon pages to smile.amazon.com.
+
+This version is a fork of the original SmileAlways version to support also amazon.de. If you want to say thank you, just pick Fablab Paderborn e.V. as your smile.amazon.de charity.
+
+==============================
+Extension Summary:
+
+This extension makes giving to charity easy by automatically redirecting all Amazon.com pages to smile.amazon.com.
+
+Through Amazon's AmazonSmile initiative, 0.5% of your purchases on eligible items will automatically be donated to the charity of your choice.
+
+SmileAlways does not collect any information about your identity or browsing or purchasing activity; we just want to help you give to charity every time you shop at Amazon, without having to remember to start at smile.amazon.com.
+
+SmileAlways was developed by two MIT students, Josh Haimson and Dan Elitzer. Josh and Dan wrote and published the initial version of this extension on November 10th, 2013, dedicating it to the memory of Aaron Swartz. We hope in our lifetimes to contribute to the world a fraction of the impact Aaron achieved during the far too short time he was among us.
+
+This version has been adapted by Arne Schwabe, a Fablab Paderborn member, to work also with smile.amazon.de
+
+While we encourage everyone who shops at Amazon to use this extension, we hope you will also find other ways to contribute to charitable causes you care about by directly donating your dollars, skills, and time. If you are unsure which charity you want to give to, please check out the organizations recommended by GiveWell, a charity research and evaluation group with whom Aaron volunteered his time.
+
+The extension was not created or endorsed by Amazon. Amazon and AmazonSmile are trademarks of Amazon.com, Inc.
+
+The repository for this extension can be accessed at https://github.com/fablab-paderborn/smilealways/
+
+Image credit to Daniel Ayuso Pérez.
