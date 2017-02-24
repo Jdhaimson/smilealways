@@ -7,9 +7,9 @@
                "48": "SA-48x48.png",
                "128": "SA-128x128.png" },
     "manifest_version": 2,
-    "name": "Smile Always",
+    "name": "Smile Always - International",
     "permissions": [ "webRequest", "webRequestBlocking", "http://www.amazon.com/*", "https://www.amazon.com/*", "http://www.amazon.de/*", "https://www.amazon.de/*" ],
-    "version": "0.92",
+    "version": "0.93",
     "homepage_url": "http://www.smilealways.io",
     "author":"Josh Haimson, Dan Elitzer and Arne Schwabe"
 }
