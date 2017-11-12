@@ -1,0 +1,17 @@
+{
+    "author": "Josh Haimson and Dan Elitzer",
+	"background": {
+       "scripts": [ "request.js" ],
+	   "persistent" : false
+    },
+    "description": "Redirects any www.amazon.com page to smile.amazon.com",
+    "name": "Smile Always",
+    "version": "1.0",
+	"icons": {
+        "20": "icons/SA-20x20.png",
+		"25": "icons/SA-25x25.png",
+		"30": "icons/SA-30x30.png",
+		"40": "icons/SA-40x40.png"
+    },
+	"permissions": [ "webRequest", "webRequestBlocking", "http://www.amazon.com/*", "https://www.amazon.com/*", "http://www.amazon.de/*", "https://www.amazon.de/*" ]
+}
