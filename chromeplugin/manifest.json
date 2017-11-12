@@ -11,5 +11,5 @@
     "permissions": [ "webRequest", "webRequestBlocking", "http://www.amazon.com/*", "https://www.amazon.com/*", "http://www.amazon.de/*", "https://www.amazon.de/*" ],
     "version": "0.92",
     "homepage_url": "http://www.smilealways.io",
-    "author":"CoderVichar"
+    "author":"Josh Haimson and Dan Elitzer"
 }
