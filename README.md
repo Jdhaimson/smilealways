@@ -1,3 +1,5 @@
+[![GitHub version](https://badge.fury.io/gh/futurekill%2Fsmilealways.svg)](http://badge.fury.io/gh/futurekill%2Fsmilealways)
+
 Amazon Smile Redirector Chrome Plugin
 ======================
 
