@@ -3,6 +3,11 @@
        "scripts": [ "request.js" ]
     },
     "description": "Redirects any www.amazon.com page to smile.amazon.com",
+    "browser_action": {
+        "default_icon": { "16": "SA-16x16.png",
+                          "48": "SA-48x48.png",
+                          "128": "SA-128x128.png" }
+    },
     "icons": { "16": "SA-16x16.png",
                "48": "SA-48x48.png",
                "128": "SA-128x128.png" },
